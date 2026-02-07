@@ -3,39 +3,55 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const isLocal = process.env.VERCEL_ENV !== "production";
 
+  const getHealthUrl = (baseUrl: string, fallback: string) => {
+    const url = (baseUrl || fallback).replace(/\/$/, "");
+    return url.endsWith("/health") ? url : `${url}/health`;
+  };
+
   const services = [
     {
       name: "Auth Service",
-      url: process.env.AUTH_SERVICE_URL || "http://localhost:3001/health",
+      url: getHealthUrl(process.env.AUTH_SERVICE_URL!, "http://localhost:3001"),
     },
     {
       name: "User Service",
-      url: process.env.USER_SERVICE_URL || "http://localhost:3002/health",
+      url: getHealthUrl(process.env.USER_SERVICE_URL!, "http://localhost:3002"),
     },
     {
       name: "Academics Service",
-      url: process.env.ACADEMICS_SERVICE_URL || "http://localhost:3004/health",
+      url: getHealthUrl(
+        process.env.ACADEMICS_SERVICE_URL!,
+        "http://localhost:3004",
+      ),
     },
     {
       name: "Outpass Service",
-      url: process.env.OUTPASS_SERVICE_URL || "http://localhost:3003/health",
+      url: getHealthUrl(
+        process.env.OUTPASS_SERVICE_URL!,
+        "http://localhost:3003",
+      ),
     },
     {
       name: "Files Service",
-      url: process.env.FILES_SERVICE_URL || "http://localhost:3005/health",
+      url: getHealthUrl(
+        process.env.FILES_SERVICE_URL!,
+        "http://localhost:3005",
+      ),
     },
     {
       name: "Mail Service",
-      url: process.env.MAIL_SERVICE_URL || "http://localhost:3006/health",
+      url: getHealthUrl(process.env.MAIL_SERVICE_URL!, "http://localhost:3006"),
     },
     {
       name: "Notification Service",
-      url:
-        process.env.NOTIFICATION_SERVICE_URL || "http://localhost:3007/health",
+      url: getHealthUrl(
+        process.env.NOTIFICATION_SERVICE_URL!,
+        "http://localhost:3007",
+      ),
     },
     {
       name: "Cron Service",
-      url: process.env.CRON_SERVICE_URL || "http://localhost:3008/health",
+      url: getHealthUrl(process.env.CRON_SERVICE_URL!, "http://localhost:3008"),
     },
   ];
 
