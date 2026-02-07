@@ -33,7 +33,7 @@
     },
     {
       "source": "/api/v1/mail/(.*)",
-      "destination": "https://uniz-mail-service-phi.vercel.app/$1"
+      "destination": "https://uniz-mail.vercel.app/$1"
     },
     {
       "source": "/api/v1/academics/(.*)",
