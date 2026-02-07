@@ -5,7 +5,7 @@
   "rewrites": [
     {
       "source": "/api/v1/auth/(.*)",
-      "destination": "http://localhost:3001/$1"
+      "destination": "https://uniz-auth.vercel.app/$1"
     },
     {
       "source": "/api/v1/system/health",
@@ -13,43 +13,43 @@
     },
     {
       "source": "/api/v1/profile/(.*)",
-      "destination": "http://localhost:3002/$1"
+      "destination": "https://uniz-user-service-five.vercel.app/$1"
     },
     {
       "source": "/api/v1/grievance/(.*)",
-      "destination": "http://localhost:3003/grievance/$1"
+      "destination": "https://uniz-outpass-service-snowy.vercel.app/grievance/$1"
     },
     {
       "source": "/api/v1/requests/(.*)",
-      "destination": "http://localhost:3003/$1"
+      "destination": "https://uniz-outpass-service-snowy.vercel.app/$1"
     },
     {
       "source": "/api/v1/cron/(.*)",
-      "destination": "http://localhost:3008/$1"
+      "destination": "https://uniz-cron-service-theta.vercel.app/$1"
     },
     {
       "source": "/api/v1/notifications/(.*)",
-      "destination": "http://localhost:3007/$1"
+      "destination": "https://uniz-notification-service-sandy.vercel.app/$1"
     },
     {
       "source": "/api/v1/mail/(.*)",
-      "destination": "http://localhost:3006/$1"
+      "destination": "https://uniz-mail-service-phi.vercel.app/$1"
     },
     {
       "source": "/api/v1/academics/(.*)",
-      "destination": "http://localhost:3004/$1"
+      "destination": "https://uniz-academics-service-beryl.vercel.app/$1"
     },
     {
       "source": "/api/v1/files/(.*)",
-      "destination": "http://localhost:3005/$1"
+      "destination": "https://uniz-files-service-blush.vercel.app/$1"
     },
     {
       "source": "/(health|status)",
-      "destination": "http://localhost:3001/health"
+      "destination": "https://uniz-auth.vercel.app/health"
     },
     {
       "source": "/",
-      "destination": "http://localhost:3001/"
+      "destination": "https://uniz-auth.vercel.app/"
     }
   ],
   "headers": [

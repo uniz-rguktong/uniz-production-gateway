@@ -6,51 +6,36 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const services = [
     {
       name: "Auth Service",
-      url: isLocal
-        ? "http://localhost:3001/health"
-        : "https://uniz-auth.vercel.app/health",
+      url: process.env.AUTH_SERVICE_URL || "http://localhost:3001/health",
     },
     {
       name: "User Service",
-      url: isLocal
-        ? "http://localhost:3002/health"
-        : "https://uniz-user-service-five.vercel.app/health",
+      url: process.env.USER_SERVICE_URL || "http://localhost:3002/health",
     },
     {
       name: "Academics Service",
-      url: isLocal
-        ? "http://localhost:3004/health"
-        : "https://uniz-academics-service-beryl.vercel.app/health",
+      url: process.env.ACADEMICS_SERVICE_URL || "http://localhost:3004/health",
     },
     {
       name: "Outpass Service",
-      url: isLocal
-        ? "http://localhost:3003/health"
-        : "https://uniz-outpass-service-snowy.vercel.app/health",
+      url: process.env.OUTPASS_SERVICE_URL || "http://localhost:3003/health",
     },
     {
       name: "Files Service",
-      url: isLocal
-        ? "http://localhost:3005/health"
-        : "https://uniz-files-service-blush.vercel.app/health",
+      url: process.env.FILES_SERVICE_URL || "http://localhost:3005/health",
     },
     {
       name: "Mail Service",
-      url: isLocal
-        ? "http://localhost:3006/health"
-        : "https://uniz-mail-service-phi.vercel.app/health",
+      url: process.env.MAIL_SERVICE_URL || "http://localhost:3006/health",
     },
     {
       name: "Notification Service",
-      url: isLocal
-        ? "http://localhost:3007/health"
-        : "https://uniz-notification-service-sandy.vercel.app/health",
+      url:
+        process.env.NOTIFICATION_SERVICE_URL || "http://localhost:3007/health",
     },
     {
       name: "Cron Service",
-      url: isLocal
-        ? "http://localhost:3008/health"
-        : "https://uniz-cron-service-theta.vercel.app/health",
+      url: process.env.CRON_SERVICE_URL || "http://localhost:3008/health",
     },
   ];
 
