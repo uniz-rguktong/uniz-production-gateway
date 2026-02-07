@@ -2,7 +2,8 @@
   "name": "uniz-production-gateway",
   "version": "1.0.0",
   "scripts": {
-    "build": "echo 'No build step'"
+    "build": "echo 'No build step'",
+    "redeploy": "bash redeploy.sh"
   },
   "dependencies": {
     "@vercel/node": "^3.0.0",
