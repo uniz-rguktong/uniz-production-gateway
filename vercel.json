@@ -1,0 +1,71 @@
+{
+  "version": 2,
+  "name": "uniz-gateway",
+  "regions": ["sin1"],
+  "rewrites": [
+    {
+      "source": "/api/v1/auth/(.*)",
+      "destination": "https://uniz-auth.vercel.app/$1"
+    },
+    {
+      "source": "/api/v1/system/health",
+      "destination": "/api/system-health"
+    },
+    {
+      "source": "/api/v1/profile/(.*)",
+      "destination": "https://uniz-user-service-five.vercel.app/$1"
+    },
+    {
+      "source": "/api/v1/grievance/(.*)",
+      "destination": "https://uniz-outpass-service-snowy.vercel.app/grievance/$1"
+    },
+    {
+      "source": "/api/v1/requests/(.*)",
+      "destination": "https://uniz-outpass-service-snowy.vercel.app/$1"
+    },
+    {
+      "source": "/api/v1/cron/(.*)",
+      "destination": "https://uniz-cron-service-theta.vercel.app/$1"
+    },
+    {
+      "source": "/api/v1/notifications/(.*)",
+      "destination": "https://uniz-notification-service-sandy.vercel.app/$1"
+    },
+    {
+      "source": "/api/v1/mail/(.*)",
+      "destination": "https://uniz-mail-service-phi.vercel.app/$1"
+    },
+    {
+      "source": "/api/v1/academics/(.*)",
+      "destination": "https://uniz-academics-service-beryl.vercel.app/$1"
+    },
+    {
+      "source": "/api/v1/files/(.*)",
+      "destination": "https://uniz-files-service-blush.vercel.app/$1"
+    },
+    {
+      "source": "/(health|status)",
+      "destination": "https://uniz-auth.vercel.app/health"
+    },
+    {
+      "source": "/",
+      "destination": "https://uniz-auth.vercel.app/"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/v1/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization"
+        }
+      ]
+    }
+  ]
+}
