@@ -43,16 +43,23 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     services.map(async (service) => {
       try {
         const response = await fetch(service.url, { method: "GET" });
+        if (!response.ok) {
+          console.warn(
+            `Health check failed for ${service.name} at ${service.url}: ${response.status}`,
+          );
+        }
         return {
           name: service.name,
           status: response.ok ? "healthy" : "unhealthy",
           statusCode: response.status,
+          url: service.url, // Temporary debug: include URL in response
         };
       } catch (error) {
         return {
           name: service.name,
           status: "unreachable",
           error: (error as Error).message,
+          url: service.url,
         };
       }
     }),
